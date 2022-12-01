@@ -1,0 +1,5 @@
+(executable
+ (public_name secd)
+ (name main)
+ (preprocess (pps ppx_deriving.show))
+ (libraries secd fmt))
