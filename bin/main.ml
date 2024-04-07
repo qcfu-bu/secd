@@ -105,4 +105,4 @@ let test8 =
      in loop n 0 1
    in fibo 40"
 
-let _ = Fmt.pr "result := %s@." (interp SECD_NEW test0)
+let _ = Fmt.pr "result := %s@." (interp SECD_NEW test2)

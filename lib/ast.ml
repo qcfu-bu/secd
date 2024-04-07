@@ -100,7 +100,7 @@ let many1 (p : 'a parser) : 'a list parser =
   let* xs = many p in
   return (x :: xs)
 
-let chainl (p : 'a parser) (q : ('a -> 'a -> 'a) parser) : 'b parser =
+let chainl (p : 'a parser) (q : ('a -> 'a -> 'a) parser) : 'a parser =
   let* x = p in
   let* fxs = many
       (let* f = q in
@@ -109,7 +109,7 @@ let chainl (p : 'a parser) (q : ('a -> 'a -> 'a) parser) : 'b parser =
   in
   return (List.fold_left (fun acc (f, x) -> f acc x) x fxs)
 
-let rec chainr (p : 'a parser) (q : ('a -> 'a -> 'a) parser) : 'b parser =
+let rec chainr (p : 'a parser) (q : ('a -> 'a -> 'a) parser) : 'a parser =
   let* x = p in
   (let* f = q in
    let* y = chainr p q in
