@@ -1,5 +1,6 @@
 open Secd
 open Ast
+open Parser
 
 type mode =
   | TREE
@@ -105,4 +106,4 @@ let test8 =
      in loop n 0 1
    in fibo 40"
 
-let _ = Fmt.pr "result := %s@." (interp SECD_NEW test2)
+let _ = Fmt.pr "result := %s@." (interp TREE test2)
