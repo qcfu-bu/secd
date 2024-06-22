@@ -4,6 +4,7 @@ open Parser
 
 type mode =
   | TREE
+  | SUBST
   | SECD_OLD
   | SECD_NEW
 
@@ -14,6 +15,12 @@ let interp mode s =
       | TREE -> Tree.(
           let hm = compile m in
           Fmt.str "%a" pp_value (tree env0 hm))
+      | SUBST -> Subst.(
+          let m = trans m in
+          match interp m with
+          | EInt i -> Fmt.str "%d" i
+          | EFun _ -> Fmt.str "<fun>"
+          | _ -> failwith "eval_subst")
       | SECD_OLD -> Secd_old.(
           let cmds = compile m in
           let res = secd [] env0 cmds [] in
@@ -106,4 +113,4 @@ let test8 =
      in loop n 0 1
    in fibo 40"
 
-let _ = Fmt.pr "result := %s@." (interp TREE test2)
+let _ = Fmt.pr "result := %s@." (interp SUBST test2)

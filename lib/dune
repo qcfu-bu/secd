@@ -1,4 +1,4 @@
 (library
  (preprocess (pps ppx_deriving.show))
- (libraries fmt)
+ (libraries fmt bindlib)
  (name secd))

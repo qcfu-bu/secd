@@ -60,7 +60,7 @@ let rec tree (e : value Env.t) m =
   | HDiv (m, n) -> (
       match tree e m, tree e n with
       | VInt i, VInt j -> VInt (i / j)
-      | _ -> failwith "mul")
+      | _ -> failwith "div")
   | HFun (f, x, n) -> VClo (f, x, n, e)
   | HApp (m, n) -> (
       match tree e m, tree e n with
