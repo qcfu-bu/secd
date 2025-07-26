@@ -101,7 +101,7 @@ let test7 =
         fibo (n - 1) + fibo (n - 2)
       else
         n
-   in fibo 40"
+   in fibo 30"
 
 let test8 =
   "let fibo n =
@@ -111,7 +111,7 @@ let test8 =
         else
           a
      in loop n 0 1
-   in fibo 40"
+   in fibo 30"
 
 let test9 =
   "let succ n f x = f (n f x) in
@@ -133,4 +133,4 @@ let test9 =
    let int_of_num n = n (fun x -> x + 1) 0 in
    int_of_num (n10M)"
 
-let _ = Fmt.pr "result := %s@." (interp SUBST test2)
+let _ = Fmt.pr "result := %s@." (interp SUBST test9)
